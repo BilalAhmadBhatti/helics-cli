@@ -1,6 +1,12 @@
 {
-    "broker": true,
+    "broker": false,
     "federates": [
+		{
+            "directory": "C:/myGitRepo/helics-cli/examples/echo-federation",
+            "exec": "python -u broker_only_p1u.py",
+            "host": "localhost",
+            "name": "HelicsBroker"
+        },
 		{
 			"directory": "C:/myGitRepo/helics-cli/examples/echo-federation",
             "exec": "python -u federate1.py 4",
