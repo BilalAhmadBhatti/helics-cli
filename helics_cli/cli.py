@@ -162,14 +162,14 @@ def run(path, silent, no_log_files, broker_loglevel):
     logger.debug("Read config: %s", config)
 
     if not silent:
-        echo("Running federation: {name}".format(name=config["name"]), status="info")
+        print("Running federation: {name}".format(name=config["name"]))
 
     broker_o = open(os.path.join(path, "broker.log"), "w")
     if config["broker"] is True:
         broker_p = subprocess.Popen(
             shlex.split(
                 "helics_broker -f {num_fed} --loglevel={log_level}".format(
-                    num_fed=len(config["federates"]), log_level=broker_loglevel
+                    num_fed=len(config["federates"]), log_level=7
                 )
             ),
             cwd=os.path.abspath(os.path.expanduser(path)),
@@ -178,7 +178,7 @@ def run(path, silent, no_log_files, broker_loglevel):
         )
     else:
         broker_p = subprocess.Popen(
-            shlex.split("echo 'Using internal broker'"),
+            shlex.split("print 'Using internal broker'"),
             cwd=os.path.abspath(os.path.expanduser(path)),
             stdout=broker_o,
             stderr=broker_o,
@@ -189,13 +189,14 @@ def run(path, silent, no_log_files, broker_loglevel):
     output_list = []
 
     for f in config["federates"]:
-
+    #for fed in (config["federates"]).keys():
+        #f = config["federates"][fed]
         if not silent:
-            echo(
+            print(
                 "Running federate {name} as a background process".format(
                     name=f["name"]
                 ),
-                status="info",
+#                status="info",
             )
 
         if log is True:
