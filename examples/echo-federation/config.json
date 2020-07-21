@@ -1,15 +1,15 @@
 {
-    "broker": false,
+    "broker": true,
     "federates": [
-        {
-            "directory": "~/GitRepos/helics-runner/examples/echo-federation",
-            "exec": "python federate1.py",
+		{
+			"directory": "C:/myGitRepo/helics-cli/examples/echo-federation",
+            "exec": "python -u federate1.py 4",
             "host": "localhost",
             "name": "Federate1"
         },
         {
-            "directory": "~/GitRepos/helics-runner/examples/echo-federation",
-            "exec": "python federate2.py",
+            "directory": "C:/myGitRepo/helics-cli/examples/echo-federation",
+            "exec": "python -u federate2.py 4",
             "host": "localhost",
             "name": "Federate2"
         }
